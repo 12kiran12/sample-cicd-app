@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: sample-app
-        image: asia-south1-docker.pkg.dev/myfirstproject/sample-repo/sample-app:latest
+        image: image: asia-south1-docker.pkg.dev/myfirstproject-496918/sample-repo/sample-app:latest
         ports:
         - containerPort: 3000
 
