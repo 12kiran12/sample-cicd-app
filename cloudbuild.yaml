@@ -3,30 +3,25 @@ steps:
 # Build Docker Image
 - name: 'gcr.io/cloud-builders/docker'
   args:
-    [
-      'build',
-      '-t',
-      'asia-south1-docker.pkg.dev/$PROJECT_ID/sample-repo/sample-app:$SHORT_SHA',
-      '.'
-    ]
+  - 'build'
+  - '-t'
+  - 'asia-south1-docker.pkg.dev/$PROJECT_ID/sample-repo/sample-app:$SHORT_SHA'
+  - '.'
 
 # Push Docker Image
 - name: 'gcr.io/cloud-builders/docker'
   args:
-    [
-      'push',
-      'asia-south1-docker.pkg.dev/$PROJECT_ID/sample-repo/sample-app:$SHORT_SHA'
-    ]
+  - 'push'
+  - 'asia-south1-docker.pkg.dev/$PROJECT_ID/sample-repo/sample-app:$SHORT_SHA'
 
 # Deploy to GKE
 - name: 'gcr.io/cloud-builders/gke-deploy'
   args:
-    [
-      'run',
-      '--filename=deployment.yaml',
-      '--image=asia-south1-docker.pkg.dev/$PROJECT_ID/sample-repo/sample-app:$SHORT_SHA',
-      '--location=asia-south1-a',
-      '--cluster=sample-cluster'
-    ]
+  - 'run'
+  - '--filename=deployment.yaml'
+  - '--image=asia-south1-docker.pkg.dev/$PROJECT_ID/sample-repo/sample-app:$SHORT_SHA'
+  - '--location=asia-south1-a'
+  - '--cluster=sample-cluster'
+
 options:
   logging: CLOUD_LOGGING_ONLY
