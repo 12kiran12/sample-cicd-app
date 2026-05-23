@@ -28,6 +28,5 @@ steps:
       '--location=asia-south1-a',
       '--cluster=sample-cluster'
     ]
-
 options:
   logging: CLOUD_LOGGING_ONLY
